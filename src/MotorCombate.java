@@ -29,12 +29,12 @@ class MotorCombate {
             }
             int accion = elegirAccion.applyAsInt(pociones);
             if (accion == 2) {
-                salida.println(heroe.nombre() + " se defiende. El próximo golpe hace la mitad de daño.");
+                salida.println(heroe.nombre() + " se defiende. El proximo golpe hace la mitad de dano.");
             } else if (accion == 3 && pociones > 0) {
                 pociones--;
                 int antes = heroe.hp();
                 heroe.cambiarHp(22);
-                salida.printf("Poción: %s HP: %d -> %d (%d restantes).%n", heroe.nombre(), antes, heroe.hp(), pociones);
+                salida.printf("Pocion: %s HP: %d -> %d (%d restantes).%n", heroe.nombre(), antes, heroe.hp(), pociones);
             } else {
                 ResultadoAtaque golpe = golpear(heroe, enemigo, false);
                 venenoEnemigo = Math.max(venenoEnemigo, golpe.turnosVeneno());

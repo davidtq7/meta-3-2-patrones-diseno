@@ -23,21 +23,21 @@ public class Main {
             if (!entrada.hasNextLine()) return;
             nombre = entrada.nextLine().strip();
         }
-        int clase = opcion(entrada, "Clase: 1 Guerrero | 2 Mago | 3 Arquero | 4 Pícaro", 1, 4, 1);
+        int clase = opcion(entrada, "Clase: 1 Guerrero | 2 Mago | 3 Arquero | 4 Picaro", 1, 4, 1);
         Personaje heroe = CLASES.get(clase - 1).crearPersonaje(nombre);
         heroe = equipar(heroe, elegirEquipo(entrada));
         int rival = opcion(entrada, "Enemigo: 1 Goblin | 2 Esqueleto | 3 Brujo", 1, 3, 1);
         Personaje enemigo = ENEMIGOS.get(rival - 1).crearEnemigo();
-        int nivel = opcion(entrada, "Bitácora: 1 Básica | 2 Detallada", 1, 2, 1);
+        int nivel = opcion(entrada, "Bitacora: 1 Basica | 2 Detallada", 1, 2, 1);
 
-        System.out.printf("Héroe: %s | HP %d | ATQ %d | DEF %d | VEL %d%n",
+        System.out.printf("Heroe: %s | HP %d | ATQ %d | DEF %d | VEL %d%n",
                 heroe.descripcion(), heroe.hp(), heroe.ataque(), heroe.defensa(), heroe.velocidad());
         System.out.printf("Enemigo: %s | HP %d%n", enemigo.descripcion(), enemigo.hp());
         Bitacora bitacora = new BitacoraBase(System.out);
         if (nivel == 2) bitacora = new BitacoraDetallada(bitacora, System.out);
         new MotorCombate(System.out, bitacora).iniciarCombate(heroe, enemigo,
-                pociones -> opcion(entrada, "Acción: 1 Atacar | 2 Defender"
-                        + (pociones > 0 ? " | 3 Poción (" + pociones + ")" : ""), 1, pociones > 0 ? 3 : 2, 1));
+                pociones -> opcion(entrada, "Accion: 1 Atacar | 2 Defender"
+                        + (pociones > 0 ? " | 3 Pocion (" + pociones + ")" : ""), 1, pociones > 0 ? 3 : 2, 1));
     }
 
     static Personaje equipar(Personaje heroe, Set<Integer> opciones) {
@@ -47,8 +47,8 @@ public class Main {
 
     private static Set<Integer> elegirEquipo(Scanner entrada) {
         while (true) {
-            System.out.println("Equipo: 1 Espada | 2 Armadura | 3 Veneno | 4 Amuleto | 5 Bendición");
-            System.out.println("Escribe los números separados por comas, o 0 para no equipar:");
+            System.out.println("Equipo: 1 Espada | 2 Armadura | 3 Veneno | 4 Amuleto | 5 Bendicion");
+            System.out.println("Escribe los numeros separados por comas, o 0 para no equipar:");
             if (!entrada.hasNextLine()) return Set.of();
             String linea = entrada.nextLine().strip();
             if (linea.equals("0") || linea.isEmpty()) return Set.of();
@@ -61,7 +61,7 @@ public class Main {
                 }
                 return elegidos;
             } catch (NumberFormatException error) {
-                System.out.println("Equipo no válido. Ejemplo: 1,3,5");
+                System.out.println("Equipo no valido. Ejemplo: 1,3,5");
             }
         }
     }
@@ -76,7 +76,7 @@ public class Main {
             } catch (NumberFormatException error) {
                 // Se vuelve a pedir la opción.
             }
-            System.out.println("Elige una opción válida.");
+            System.out.println("Elige una opcion valida.");
         }
     }
 }

@@ -56,5 +56,5 @@ class BendicionDecorator extends PersonajeDecorator {
     public int ataque() { return (int) Math.round(super.ataque() * 1.15); }
     public int defensa() { return (int) Math.round(super.defensa() * 1.15); }
     public int velocidad() { return (int) Math.round(super.velocidad() * 1.15); }
-    public String descripcion() { return super.descripcion() + " + Bendición"; }
+    public String descripcion() { return super.descripcion() + " + Bendicion"; }
 }

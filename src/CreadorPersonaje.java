@@ -3,7 +3,7 @@ abstract class CreadorPersonaje {
 
     protected String validarNombre(String nombre) {
         if (nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío.");
+            throw new IllegalArgumentException("El nombre no puede estar vacio.");
         }
         return nombre.strip();
     }
@@ -46,5 +46,5 @@ class Arquero extends PersonajeBase {
 }
 
 class Picaro extends PersonajeBase {
-    Picaro(String nombre) { super(nombre, "Pícaro", 85, 16, 6, 16, new AtaquePunalada()); }
+    Picaro(String nombre) { super(nombre, "Picaro", 85, 16, 6, 16, new AtaquePunalada()); }
 }

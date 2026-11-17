@@ -11,7 +11,7 @@ class BitacoraBase implements Bitacora {
     BitacoraBase(PrintStream salida) { this.salida = salida; }
 
     public void ataque(Personaje atacante, Personaje objetivo, ResultadoAtaque resultado, int hpPrevio) {
-        salida.printf("%s usa %s: %d de daño | %s HP: %d -> %d%n",
+        salida.printf("%s usa %s: %d de dano | %s HP: %d -> %d%n",
                 atacante.nombre(), resultado.forma(), resultado.dano(), objetivo.nombre(), hpPrevio, objetivo.hp());
     }
 
@@ -33,7 +33,7 @@ class BitacoraDetallada implements Bitacora {
     public void ataque(Personaje atacante, Personaje objetivo, ResultadoAtaque resultado, int hpPrevio) {
         base.ataque(atacante, objetivo, resultado, hpPrevio);
         golpes++;
-        salida.printf("  Bloqueado: %d%s%n", resultado.bloqueo(), resultado.critico() ? " | CRÍTICO" : "");
+        salida.printf("  Bloqueado: %d%s%n", resultado.bloqueo(), resultado.critico() ? " | CRITICO" : "");
     }
 
     public void cerrar(Personaje heroe, Personaje enemigo, int turnos) {

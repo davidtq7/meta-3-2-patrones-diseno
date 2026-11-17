@@ -35,7 +35,7 @@ class AtaqueFlecha implements EstrategiaAtaque {
 class AtaquePunalada implements EstrategiaAtaque {
     public ResultadoAtaque atacar(Personaje atacante, Personaje objetivo) {
         boolean critico = atacante.velocidad() - objetivo.velocidad() >= 4;
-        return ResultadoAtaque.calcular("Puñalada", atacante.ataque() + (critico ? 8 : 0),
+        return ResultadoAtaque.calcular("Punalada", atacante.ataque() + (critico ? 8 : 0),
                 objetivo.defensa(), critico);
     }
 }
