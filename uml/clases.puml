@@ -1,0 +1,62 @@
+@startuml
+title RPG por turnos - Diagrama de clases simplificado
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+top to bottom direction
+hide empty members
+
+class Main
+class MotorCombate
+interface Personaje {
+  +atacar(objetivo): ResultadoAtaque
+  +ataque(): int
+  +defensa(): int
+  +velocidad(): int
+}
+class PersonajeBase
+class Mago
+class Goblin
+abstract class CreadorPersonaje {
+  +crearPersonaje(nombre): Personaje
+}
+abstract class CreadorEnemigo {
+  +crearEnemigo(): Personaje
+}
+class CreadorMago
+class CreadorGoblin
+interface EstrategiaAtaque {
+  +atacar(atacante, objetivo): ResultadoAtaque
+}
+class AtaqueHechizo
+class AtaquePunalada
+abstract class PersonajeDecorator
+class EspadaDecorator
+class VenenoDecorator
+interface Bitacora
+class BitacoraBase
+class BitacoraDetallada
+
+Main ..> MotorCombate
+Main ..> CreadorPersonaje
+Main ..> CreadorEnemigo
+MotorCombate ..> Personaje : usa
+MotorCombate --> Bitacora : registra
+BitacoraBase ..|> Bitacora
+BitacoraDetallada ..|> Bitacora
+BitacoraDetallada --> Bitacora : base
+PersonajeBase ..|> Personaje
+PersonajeDecorator ..|> Personaje
+PersonajeDecorator --> "1" Personaje : envuelve
+EspadaDecorator --|> PersonajeDecorator
+VenenoDecorator --|> PersonajeDecorator
+PersonajeBase --> "1" EstrategiaAtaque : delega ataque
+AtaqueHechizo ..|> EstrategiaAtaque
+AtaquePunalada ..|> EstrategiaAtaque
+CreadorMago --|> CreadorPersonaje
+CreadorGoblin --|> CreadorEnemigo
+CreadorMago ..> Mago : crea
+CreadorGoblin ..> Goblin : crea
+Mago --|> PersonajeBase
+Goblin --|> PersonajeBase
+@enduml

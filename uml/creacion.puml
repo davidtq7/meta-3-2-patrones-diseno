@@ -1,0 +1,29 @@
+@startuml
+title Crear a Aria y equiparla para el combate
+skinparam monochrome true
+skinparam shadowing false
+actor Jugador
+participant "Main\n(consola)" as UI
+participant ":CreadorMago" as C
+
+Jugador -> UI : Nombre Aria, clase Mago
+UI -> C : crearPersonaje("Aria")
+activate C
+C -> C : validarNombre("Aria")
+create participant "aria:Mago" as M
+C -> M : new Mago("Aria")
+note right of M : Inicia con AtaqueHechizo.
+C --> UI : aria como Personaje
+deactivate C
+Jugador -> UI : Equipar 1,3,5
+UI -> UI : equipar(aria, [1,3,5])
+create participant ":EspadaDecorator" as E
+UI -> E : new EspadaDecorator(aria)
+create participant ":VenenoDecorator" as V
+UI -> V : new VenenoDecorator(espada)
+create participant ":BendicionDecorator" as B
+UI -> B : new BendicionDecorator(veneno)
+UI -> B : descripcion()
+B --> UI : Aria (Mago) + Espada + Veneno + Bendición
+UI --> Jugador : Muestra a Aria equipada
+@enduml
